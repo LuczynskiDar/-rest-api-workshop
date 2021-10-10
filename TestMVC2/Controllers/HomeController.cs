@@ -9,7 +9,8 @@ using TestMVC2.Models;
 
 namespace TestMVC2.Controllers
 {
-    public class HomeController : Controller
+    [ApiController]    
+    public class HomeController : ControllerBase
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -20,19 +21,7 @@ namespace TestMVC2.Controllers
 
         public IActionResult Index()
         {
-            // return View();
-            return Json(new {Id = 1, Name = "Metallica"});
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+            return Ok(new {Id = 1, Name = "Metallica"});
         }
     }
 }
