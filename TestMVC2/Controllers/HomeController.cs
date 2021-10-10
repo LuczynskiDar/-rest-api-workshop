@@ -13,7 +13,8 @@ namespace TestMVC2.Controllers
     public class HomeController : ControllerBase
     {
         private readonly ILogger<HomeController> _logger;
-
+        
+        // Scructor lib
         // public HomeController(ILogger<HomeController> logger, ITest test)
         public HomeController(ILogger<HomeController> logger, IEnumerable<ITest> test)
         {

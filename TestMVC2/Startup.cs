@@ -26,8 +26,14 @@ namespace TestMVC2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ITest, Test>();
-            services.AddScoped<ITest, Test2>();
+            // services.AddScoped<ITest, Test>();
+            // services.AddScoped<ITest, Test2>();
+
+
+            services.Scan(scan => scan.FromAssemblyOf<Startup>()
+                .AddClasses(@class => @class.AssignableTo<ITest>())
+                .AsImplementedInterfaces());
+            
             services.AddControllers().
                 ConfigureApiBehaviorOptions(options =>
                 {
