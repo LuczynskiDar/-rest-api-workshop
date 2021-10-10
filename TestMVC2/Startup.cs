@@ -23,8 +23,15 @@ namespace TestMVC2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddControllersWithViews();
-            services.AddControllers();
+            services.AddControllers().
+                ConfigureApiBehaviorOptions(options =>
+                {
+                    options.SuppressConsumesConstraintForFormFileParameters = true;
+                    options.SuppressInferBindingSourcesForParameters = true;
+                    options.SuppressModelStateInvalidFilter = true;
+                    options.SuppressMapClientErrors = true;
+                    options.ClientErrorMapping[404].Link = "htts://httpstatuses.com/404";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
