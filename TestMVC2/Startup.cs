@@ -11,6 +11,9 @@ using Microsoft.Extensions.Hosting;
 
 namespace TestMVC2
 {
+    public interface ITest{}
+    public class Test : ITest {}
+    public class Test2 : ITest {}
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -23,6 +26,8 @@ namespace TestMVC2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITest, Test>();
+            services.AddScoped<ITest, Test2>();
             services.AddControllers().
                 ConfigureApiBehaviorOptions(options =>
                 {

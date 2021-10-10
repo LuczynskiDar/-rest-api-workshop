@@ -14,7 +14,8 @@ namespace TestMVC2.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        // public HomeController(ILogger<HomeController> logger, ITest test)
+        public HomeController(ILogger<HomeController> logger, IEnumerable<ITest> test)
         {
             _logger = logger;
         }
