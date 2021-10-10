@@ -21,7 +21,7 @@ namespace TestMVC2.Controllers
 
         public IActionResult Index()
         {
-            return Ok(new {Id = 1, Name = "Metallica"});
+            return Ok(new Artist {Id = 1, Name = "Metallica"});
         }
     }
 }
