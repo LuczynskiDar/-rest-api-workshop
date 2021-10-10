@@ -20,7 +20,8 @@ namespace TestMVC2.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            // return View();
+            return Json(new {Id = 1, Name = "Metallica"});
         }
 
         public IActionResult Privacy()
