@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -14,10 +15,31 @@ Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
 {
     webBuilder.Configure(app =>
     {
-        app.Run(async context =>
-        {
-            await context.Response.WriteAsync("Hello .Net Core!");
-        });
+        // app.Run(async context =>
+        // {
+        //     await context.Response.WriteAsync("Hello .Net Core!");
+        // });
+
+        // app.Use((context, next) =>
+        //     {
+        //         return next();
+        //     }
+        // );
+        
+        app.Use((context, next) =>
+            {
+                var cultureQuery = context.Request.Query["culture"];
+
+                if (!string.IsNullOrEmpty(cultureQuery))
+                {
+                    var culture = new CultureInfo(cultureQuery);
+                    CultureInfo.CurrentCulture = culture;
+                    CultureInfo.CurrentUICulture = culture;
+                }
+                
+                return next();
+            }
+        );
         
         app.UseRouting();
         app.UseEndpoints(endpoints =>
