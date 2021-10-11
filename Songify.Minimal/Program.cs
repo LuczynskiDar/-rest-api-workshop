@@ -1,4 +1,6 @@
+using System;
 using System.Globalization;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +12,8 @@ var services = new ServiceCollection();
 services.AddTransient<GetsRoutesValueHelper>();
 services.AddSingleton<InMemoryRepository>();
 var serviceProvider = services.BuildServiceProvider();
+
+
 
 Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
 {
@@ -26,20 +30,34 @@ Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
         //     }
         // );
         
-        app.Use((context, next) =>
-            {
-                var cultureQuery = context.Request.Query["culture"];
+        // app.Use((context, next) =>
+        // {
+        //     var cultureQuery = context.Request.Query["culture"];
+        //     if (!string.IsNullOrWhiteSpace(cultureQuery))
+        //     {
+        //         var culture = new CultureInfo(cultureQuery);
+        //
+        //         CultureInfo.CurrentCulture = culture;
+        //         CultureInfo.CurrentUICulture = culture;
+        //     }
+        //
+        //     return next();
+        // });
 
-                if (!string.IsNullOrEmpty(cultureQuery))
-                {
-                    var culture = new CultureInfo(cultureQuery);
-                    CultureInfo.CurrentCulture = culture;
-                    CultureInfo.CurrentUICulture = culture;
-                }
-                
-                return next();
-            }
-        );
+        app.UseMiddleware<RequestCultureMiddleware>();
+        
+        app.Run(async context =>
+        {
+            // COnsider following en culture groups
+            // en
+            // en_GB
+            // en_US
+            await context
+                .Response
+                .WriteAsync($"Hello everyone {CultureInfo.CurrentCulture.DisplayName}, " +
+                            $"{CultureInfo.InvariantCulture}, " +
+                            $"and UI {CultureInfo.CurrentUICulture.DisplayName}");
+        });
         
         app.UseRouting();
         app.UseEndpoints(endpoints =>
