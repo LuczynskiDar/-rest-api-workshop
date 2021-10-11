@@ -35,7 +35,7 @@ Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
                 // await context.Response.WriteAsJsonAsync(new {Id = 1, Name = "Metallica"});
             });
 
-            endpoints.MapPost("/artist", async context =>
+            endpoints.MapPost("/artists", async context =>
             {
                 using var scope = serviceProvider.CreateScope();
                 var repository = scope.ServiceProvider.GetRequiredService<InMemoryRepository>();
