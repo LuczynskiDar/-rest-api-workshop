@@ -14,6 +14,11 @@ Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
 {
     webBuilder.Configure(app =>
     {
+        app.Run(async context =>
+        {
+            await context.Response.WriteAsync("Hello .Net Core!");
+        });
+        
         app.UseRouting();
         app.UseEndpoints(endpoints =>
         {
