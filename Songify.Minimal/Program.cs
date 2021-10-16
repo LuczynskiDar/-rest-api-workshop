@@ -44,8 +44,9 @@ Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
         //     return next();
         // });
 
-        app.UseMiddleware<RequestCultureMiddleware>();
-        
+        // app.UseMiddleware<RequestCultureMiddleware>();
+
+        app.UseRequestCulture();
         app.Run(async context =>
         {
             // COnsider following en culture groups
