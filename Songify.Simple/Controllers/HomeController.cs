@@ -19,8 +19,7 @@ namespace Songify.Simple.Controllers
         private readonly ILogger<HomeController> _logger;
         
         // Scructor lib
-        // public HomeController(ILogger<HomeController> logger, ITest test)
-        public HomeController(ILogger<HomeController> logger, IEnumerable<ITest> test)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }

@@ -24,3 +24,5 @@ C:\Workspace\rest-api-workshop\TestMVC2\obj\Debug\net5.0\TestMVC2.dll
 C:\Workspace\rest-api-workshop\TestMVC2\obj\Debug\net5.0\ref\TestMVC2.dll
 C:\Workspace\rest-api-workshop\TestMVC2\obj\Debug\net5.0\TestMVC2.pdb
 C:\Workspace\rest-api-workshop\TestMVC2\obj\Debug\net5.0\TestMVC2.genruntimeconfig.cache
+C:\Workspace\rest-api-workshop\TestMVC2\bin\Debug\net5.0\AutoMapper.dll
+C:\Workspace\rest-api-workshop\TestMVC2\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

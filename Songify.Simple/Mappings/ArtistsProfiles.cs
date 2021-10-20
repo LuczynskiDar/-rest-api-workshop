@@ -6,10 +6,13 @@ namespace Songify.Simple.Mappings
 {
     public class ArtistsProfiles: Profile
     {
-        CreateMap<CreateArtistResource, Artist>();
-        CreateMap<UpdateArtistResource, Artist>();
-
-        CreateMap<Artist, CreateArtistResource>();
-        CreateMap<Artist, UpdateArtistResource>();
+        public ArtistsProfiles()
+        {
+            CreateMap<CreateArtistResource, Artist>();
+            CreateMap<UpdateArtistResource, Artist>();
+            
+            CreateMap<Artist, CreateArtistResource>();
+            CreateMap<Artist, UpdateArtistResource>();
+        }
     }
 }

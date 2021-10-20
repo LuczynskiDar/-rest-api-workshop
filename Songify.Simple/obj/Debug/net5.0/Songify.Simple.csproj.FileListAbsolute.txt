@@ -7,6 +7,8 @@ C:\Workspace\rest-api-workshop\Songify.Simple\bin\Debug\net5.0\Songify.Simple.ru
 C:\Workspace\rest-api-workshop\Songify.Simple\bin\Debug\net5.0\Songify.Simple.dll
 C:\Workspace\rest-api-workshop\Songify.Simple\bin\Debug\net5.0\ref\Songify.Simple.dll
 C:\Workspace\rest-api-workshop\Songify.Simple\bin\Debug\net5.0\Songify.Simple.pdb
+C:\Workspace\rest-api-workshop\Songify.Simple\bin\Debug\net5.0\AutoMapper.dll
+C:\Workspace\rest-api-workshop\Songify.Simple\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Workspace\rest-api-workshop\Songify.Simple\bin\Debug\net5.0\Microsoft.OpenApi.dll
 C:\Workspace\rest-api-workshop\Songify.Simple\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Workspace\rest-api-workshop\Songify.Simple\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll

@@ -6,11 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Songify.Simple.DAL;
+using Songify.Simple.Helpers;
 
 namespace Songify.Simple
 {
@@ -26,8 +29,13 @@ namespace Songify.Simple
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<InMemoryRepository>();
             services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
+            // services.AddControllers(options =>
+            // {
+            //     options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
+            // });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Songify.Simple", Version = "v1" });
