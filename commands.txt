@@ -1,0 +1,5 @@
+# History file, http://woshub.com/powershell-commands-history/
+%userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+dotnet new webapi -n Songify.Minimal -o ./Songify.Minimal
+dotnet sln add .\Songify.Minimal\*.csproj
+dotnet sln add (ls -r **/*.csproj)

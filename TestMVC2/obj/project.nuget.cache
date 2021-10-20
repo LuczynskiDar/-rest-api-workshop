@@ -1,12 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "QBvLj/NnJyc2pFrA3qSsDcFQqeAAR3H4tK6f/m91FV+i7TJgNmkfCZKw8dwVqTUzONtV20Fdf+aQ/TeUGbdJrg==",
+  "dgSpecHash": "pCCfVyKqGd1nra95ad9K150x7aGssTM8FIgGkhC7UQaF2hynCSoCzMe6/m8pbHC3P9nlughdGRWcLkyOAi5zWQ==",
   "success": true,
   "projectFilePath": "C:\\Workspace\\rest-api-workshop\\TestMVC2\\TestMVC2.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\qjx5pl\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\qjx5pl\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\qjx5pl\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\qjx5pl\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.9\\microsoft.extensions.dependencyinjection.abstractions.3.1.9.nupkg.sha512",
     "C:\\Users\\qjx5pl\\.nuget\\packages\\microsoft.extensions.dependencymodel\\3.1.6\\microsoft.extensions.dependencymodel.3.1.6.nupkg.sha512",
+    "C:\\Users\\qjx5pl\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
+    "C:\\Users\\qjx5pl\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
     "C:\\Users\\qjx5pl\\.nuget\\packages\\scrutor\\3.3.0\\scrutor.3.3.0.nupkg.sha512",
+    "C:\\Users\\qjx5pl\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\qjx5pl\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
   ],
   "logs": []
