@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = TestMVC2
-build_property.ProjectDir = C:\Workspace\rest-api-workshop\TestMVC2\
+build_property.ProjectDir = c:\Workspace\rest-api-workshop\TestMVC2\

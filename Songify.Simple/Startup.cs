@@ -7,11 +7,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using Songify.Simple.DAL;
 using Songify.Simple.Helpers;
 
@@ -31,11 +35,19 @@ namespace Songify.Simple
         {
             services.AddSingleton<InMemoryRepository>();
             services.AddAutoMapper(typeof(Startup));
-            services.AddControllers();
-            // services.AddControllers(options =>
-            // {
-            //     options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
-            // });
+            // services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
+            })
+                .AddNewtonsoftJson(x =>
+                {
+                    x.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    x.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                    x.SerializerSettings.Converters.Add(new StringEnumConverter());               
+                }
+            );
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Songify.Simple", Version = "v1" });
