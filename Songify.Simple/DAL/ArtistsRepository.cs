@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Songify.Simple.Models;
 
 namespace Songify.Simple.DAL
 {
-    public class ArtistsRepository: IRepository
+    public class ArtistsRepository: IRepository, IArtistRepository
     {
         private readonly SongifyDbContext _context;
         public IUnitOfWork UnitOfWork => _context;
@@ -13,39 +15,56 @@ namespace Songify.Simple.DAL
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
-
-
         
-        void Add(Artist artist)
+        public void Add(Artist artist)
         {
             _context.Artists.Add(artist);
 
         }
 
-        Artist Get(int id)
+        // Artist Get(int id)
+        // {
+        //    return _context.Artists.FirstOrDefault(w => w.Id == id);
+        //    
+        // }
+        
+        public Task<Artist> Get(int id)
         {
-           return _context.Artists.FirstOrDefault(w => w.Id == id);
+            return _context.Artists
+                .FirstAsync(x => x.Id == id);
         }
 
-        void Delete(int id)
+        // public void Delete(int id)
+        // {
+        //     var artist = Get(id);
+        //     if (artist != null)
+        //     {
+        //         _context.Artists.Remove(artist);
+        //
+        //     }
+        // }
+        
+        public void Remove(int id)
         {
-            var artist = Get(id);
-            if (artist != null)
-            {
-                _context.Artists.Remove(artist);
-
-            }
+            _context.Artists.Remove(new Artist {Id = id});
         }
+        
 
-        void Update(Artist artist)
+        // void Update(Artist artist)
+        // {
+        //     var oldArtist = Get(artist.Id);
+        //     if (oldArtist != null)
+        //     {
+        //         _context.Artists.Remove(oldArtist);
+        //         _context.Artists.Add(artist);
+        //
+        //     }
+        // }
+        
+        public void Update(Artist artist)
         {
-            var oldArtist = Get(artist.Id);
-            if (oldArtist != null)
-            {
-                _context.Artists.Remove(oldArtist);
-                _context.Artists.Add(artist);
-
-            }
+            _context.Entry(artist).State = EntityState.Modified;
         }
+        
     }
 }

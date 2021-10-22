@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gZiViFTal5Efdwxp9tyXbLz9XMbBnziOKdKnWBlr5S28DtrmQEwSeA0kJHn+Cb/Nzf3o2jQ4EawmMCPklqZhpQ==",
+  "dgSpecHash": "teTrx+iFPaF4HtzxyD5fOKFG1auOf8Bg4wOtpHEdr0lY3yFo98CFOYStTTtJBJ2dqUQl0iqSu5Pt77rbV6qpjA==",
   "success": true,
   "projectFilePath": "C:\\Workspace\\rest-api-workshop\\Songify.Simple\\Songify.Simple.csproj",
   "expectedPackageFiles": [
@@ -47,6 +47,7 @@
     "C:\\Users\\qjx5pl\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Users\\qjx5pl\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\qjx5pl\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
+    "C:\\Users\\qjx5pl\\.nuget\\packages\\scrutor\\3.3.0\\scrutor.3.3.0.nupkg.sha512",
     "C:\\Users\\qjx5pl\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.4\\sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\qjx5pl\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\qjx5pl\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",

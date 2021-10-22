@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +36,19 @@ namespace Songify.Simple
         {
             services.AddSingleton<InMemoryRepository>();
             services.AddAutoMapper(typeof(Startup));
+            //scrutor
+            services.Scan(scan => scan.FromAssemblyOf<Startup>()
+                .AddClasses(@class => @class.AssignableTo<IRepository>())
+                .AsImplementedInterfaces());
+            services.AddDbContext<SongifyDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), 
+                    conf =>
+                    {
+                        conf.MigrationsAssembly(typeof(Startup).Assembly.FullName);
+                    });
+            });
+            
             // services.AddControllers();
             services.AddControllers(options =>
             {

@@ -4,3 +4,5 @@ dotnet new webapi -n Songify.Minimal -o ./Songify.Minimal
 dotnet sln add .\Songify.Minimal\*.csproj
 dotnet sln add (ls -r **/*.csproj)
 dotnet tool install --global dotnet-ef
+
+docker-compose up -d

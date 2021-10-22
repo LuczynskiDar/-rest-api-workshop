@@ -12,16 +12,19 @@ namespace Songify.Simple.Controllers
     public class ArtistsController : ControllerBase
     {
         private readonly IMapper _mapper;
+        private readonly IArtistRepository _repository;
         // private static readonly List<Artist> _artists = new();
-        private readonly InMemoryRepository _repository;
+        // private readonly InMemoryRepository _repository;
 
 
-        public ArtistsController(IMapper mapper, InMemoryRepository repository)
+        // public ArtistsController(IMapper mapper, InMemoryRepository repository)
+        public ArtistsController(IMapper mapper, IArtistRepository repository)
         {
             _mapper = mapper;
             _repository = repository;
         }
         
+        // Create
         [HttpPost]
         public IActionResult Create(CreateArtistResource resource)
         {
@@ -32,6 +35,7 @@ namespace Songify.Simple.Controllers
             return Created($"api/artists/{artists.Id}", artists);
         }
         
+        // Get
         [HttpGet]
         [Route("{id:int}")]
         public IActionResult Get(int id)
@@ -50,6 +54,7 @@ namespace Songify.Simple.Controllers
         
         }
         
+        // Remove
         [HttpDelete]
         [Route("{id:int}")]
         public IActionResult Remove(int id)
@@ -60,10 +65,11 @@ namespace Songify.Simple.Controllers
             {
                 return NotFound();
             }
-            _repository.Delete(id);
+            _repository.Remove(id);
             return NoContent();
         }
         
+        // Update
         [HttpPut]
         public IActionResult Update(UpdateArtistResource resource)
         {    
@@ -74,8 +80,10 @@ namespace Songify.Simple.Controllers
                 return NotFound();
             }
             
-            _repository.Delete(resource.Id);
-            _repository.Add(_mapper.Map<UpdateArtistResource, Artist>(resource));
+            // _repository.Remove(resource.Id);
+            // _repository.Add(_mapper.Map<UpdateArtistResource, Artist>(resource));
+            
+            _repository.Update(_mapper.Map<UpdateArtistResource, Artist>(resource));
             return Ok();
         }
         
