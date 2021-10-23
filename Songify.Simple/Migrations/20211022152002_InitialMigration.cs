@@ -22,6 +22,10 @@ namespace Songify.Simple.Migrations
                 {
                     table.PrimaryKey("PK_Artists", x => x.Id);
                 });
+            
+            // Ourt place f.ex.:
+            // migrationBuilder.CreateSequence()
+            // migrationBuilder.Sql("Create view")
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

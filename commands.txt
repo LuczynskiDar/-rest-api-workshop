@@ -6,3 +6,8 @@ dotnet sln add (ls -r **/*.csproj)
 dotnet tool install --global dotnet-ef
 
 docker-compose up -d
+$ dotent ef migrations add InitialMigration -v
+$ dotnet ef database update -v
+
+Open API, definicja API w Json, dla IBM API connec5
+RFC7807
