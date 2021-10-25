@@ -61,6 +61,13 @@ namespace Songify.Simple.Controllers
         
         // Get
         [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var artists = await _repository.GetArtists();
+            return Ok(artists);
+        }
+
+        [HttpGet]
         [Route("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {

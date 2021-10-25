@@ -6,9 +6,12 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Microsoft.Extensions.Configuration;
@@ -63,7 +66,42 @@ namespace Songify.Simple
                     x.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                     x.SerializerSettings.Converters.Add(new StringEnumConverter());               
                 }
-            );
+            )
+                .ConfigureApiBehaviorOptions(setupAction =>
+                {
+                    setupAction.InvalidModelStateResponseFactory = context =>
+                    {
+                        var problemDetailsFactory = context.HttpContext.RequestServices
+                            .GetRequiredService<ProblemDetailsFactory>();
+                        var problemDetails = problemDetailsFactory
+                            .CreateValidationProblemDetails(context.HttpContext, context.ModelState);
+                        problemDetails.Detail = "Se the errors field for details";
+                        problemDetails.Instance = context.HttpContext.Request.Path;
+                        var actionExecutingContext = context as ActionExecutingContext;
+                        if (
+                            (context.ModelState.ErrorCount > 0) &&
+                            (actionExecutingContext?.ActionArguments.Count() == context.ActionDescriptor.Parameters.Count)
+                        )
+                        {
+                            // https://datatracker.ietf.org/doc/html/rfc7807
+                            problemDetails.Type = "https://songify.com/modelvalidationproblem";
+                            problemDetails.Status = StatusCodes.Status422UnprocessableEntity;
+                            problemDetails.Title = "One or more validation occured.";
+
+                            return new UnprocessableEntityObjectResult(problemDetails)
+                            {
+                                ContentTypes = {"application/problem+json"}
+                            };
+                        }
+
+                        problemDetails.Status = StatusCodes.Status400BadRequest;
+                        problemDetails.Title = "One or more errors on input occured.";
+                        return new BadRequestObjectResult(problemDetails)
+                        {
+                            ContentTypes = {"application/problem+json"}
+                        };
+                    };
+                });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo

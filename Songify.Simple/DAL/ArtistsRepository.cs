@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Songify.Simple.Helpers;
 using Songify.Simple.Models;
 
 namespace Songify.Simple.DAL
@@ -65,6 +67,13 @@ namespace Songify.Simple.DAL
         {
             _context.Entry(artist).State = EntityState.Modified;
         }
-        
+
+        // public Task<PagedList<Artist>> GetArtists()
+        public Task<List<Artist>> GetArtists()
+        {
+            // var colection = _context.Artists.AsQueryable();
+            // var collection = _context.Artists as IQueryable<Artist>;
+            return _context.Artists.ToListAsync();
+        }
     }
 }
