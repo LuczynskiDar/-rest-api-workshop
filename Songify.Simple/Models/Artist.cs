@@ -8,7 +8,7 @@ namespace Songify.Simple.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [MaxLength(300)]
+        [MaxLength(30)]
         public string Name { get; set; }
         public string Origin { get; set; }
         public DateTime? CreatedAt { get; set; }

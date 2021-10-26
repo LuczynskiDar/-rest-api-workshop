@@ -2,9 +2,12 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Songify.Simple.DAL;
 using Songify.Simple.Dtos;
+using Songify.Simple.Helpers;
 using Songify.Simple.Models;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Songify.Simple.Controllers
 {
@@ -59,11 +62,35 @@ namespace Songify.Simple.Controllers
             return Created($"api/artists/{artists.Id}", artists);
         }
         
-        // Get
+        /// <summary>
+        /// Get a list of Artist 
+        /// </summary>
+        /// <remarks>
+        /// Some more comment inside remarks tag
+        /// </remarks>
+        /// <returns>List of artists</returns>
+        /// <response code="200">Returns existing artists entity</response>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpHead]
+        [Produces(System.Net.Mime.MediaTypeNames.Application.Json)]
+        // [ProducesResponseType(typeof(PagedList<Artist>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        // public async Task<IActionResult> Get(int pageNumber, int pageSize)
+        public async Task<IActionResult> Get([FromQuery]int pageNumber, [FromQuery]int pageSize)
         {
-            var artists = await _repository.GetArtists();
+            var artists = await _repository.GetArtists(pageNumber, pageSize);
+            var paginationMetaData = new
+            {
+                totalCount = artists.TotalCount,
+                totalPages = artists.TotalPages,
+                currentPage = artists.CurrentPage,
+                pageSize = artists.PageSize
+            };
+            
+            // Naglowki z b3 standard tracing, poprzedza sie je 'X-'
+            // openzipkin/3-propagation
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetaData));
+            
             return Ok(artists);
         }
 

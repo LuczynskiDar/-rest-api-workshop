@@ -13,7 +13,7 @@ namespace Songify.Simple.DAL
             public Task<Artist> Get(int id);
             public void Update(Artist artist);
             public void Remove(int id);
-            // Task<PagedList<Artist>> GetArtists();
-            Task<List<Artist>> GetArtists();
+            public Task<PagedList<Artist>> GetArtists(int pageNumber, int pageSize);
+            // Task<List<Artist>> GetArtists();
     }
 }

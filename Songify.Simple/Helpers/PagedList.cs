@@ -22,6 +22,8 @@ namespace Songify.Simple.Helpers
             PageSize = pageSize;
             TotalCount = count;
             TotalPages = (int) Math.Ceiling(count / (double) pageSize);
+            
+            AddRange(items);
         }
         
         // Statyczna metoda wytwórcza

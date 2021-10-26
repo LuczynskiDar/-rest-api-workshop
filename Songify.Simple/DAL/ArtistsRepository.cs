@@ -68,12 +68,13 @@ namespace Songify.Simple.DAL
             _context.Entry(artist).State = EntityState.Modified;
         }
 
-        // public Task<PagedList<Artist>> GetArtists()
-        public Task<List<Artist>> GetArtists()
+        public Task<PagedList<Artist>> GetArtists(int pageNumber, int pageSize)
+        // public Task<List<Artist>> GetArtists()
         {
-            // var colection = _context.Artists.AsQueryable();
+            var collection = _context.Artists.AsQueryable();
             // var collection = _context.Artists as IQueryable<Artist>;
-            return _context.Artists.ToListAsync();
+            return PagedList<Artist>.Create(collection, pageNumber, pageSize);
+            // return _context.Artists.ToListAsync();
         }
     }
 }
