@@ -11,3 +11,7 @@ $ dotnet ef database update -v
 
 Open API, definicja API w Json, dla IBM API connec5
 RFC7807
+
+#lista temlate'ow tool-manifest
+dotnet new
+# sprawdzic build co sie nazywa cake

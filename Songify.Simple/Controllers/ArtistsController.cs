@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -55,6 +56,9 @@ namespace Songify.Simple.Controllers
         public async Task<IActionResult> Create(CreateArtistResource resource)
         {
             var artists =  _mapper.Map<CreateArtistResource, Artist>(resource);
+
+            var rnd = new Random();
+            artists.Id = rnd.Next();
             
             _repository.Add(artists);
             await _repository.UnitOfWork.SaveChangesAsync();
@@ -71,13 +75,13 @@ namespace Songify.Simple.Controllers
         /// <returns>List of artists</returns>
         /// <response code="200">Returns existing artists entity</response>
         [HttpGet]
-        [HttpHead]
+        // [HttpHead]
         [Produces(System.Net.Mime.MediaTypeNames.Application.Json)]
-        // [ProducesResponseType(typeof(PagedList<Artist>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(PagedList<Artist>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        // public async Task<IActionResult> Get(int pageNumber, int pageSize)
-        // public async Task<IActionResult> Get([FromQuery]int pageNumber, [FromQuery]int pageSize)
         public async Task<IActionResult> Get([FromQuery]ArtistResourceParameters parameters)
+            // public async Task<IActionResult> Get(int pageNumber, int pageSize)
+            // public async Task<IActionResult> Get([FromQuery]int pageNumber, [FromQuery]int pageSize)
         {
             // var artists = await _repository.GetArtists(pageNumber, pageSize);
             var artists = await _repository.GetArtists(parameters);

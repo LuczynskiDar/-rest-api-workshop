@@ -16,7 +16,6 @@ namespace Songify.Simple.Helpers
         public bool HasPrevious => (CurrentPage > 1);
         public bool HasNext => (CurrentPage < TotalPages);
 
-        // public PagedList(List<T> items, int pageNumber, int pageSize, int count)
         public PagedList(List<T> items, int pageNumber, int pageSize, int count)
         {
             CurrentPage = pageNumber;

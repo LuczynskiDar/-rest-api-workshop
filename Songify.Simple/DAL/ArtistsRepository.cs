@@ -72,11 +72,29 @@ namespace Songify.Simple.DAL
         public Task<PagedList<Artist>> GetArtists(ArtistResourceParameters parameters)
         // public Task<PagedList<Artist>> GetArtists(int pageNumber, int pageSize)
         // public Task<List<Artist>> GetArtists()
-        {
-            var collection = _context.Artists.AsQueryable();
+        {            
             // var collection = _context.Artists as IQueryable<Artist>;
-            // return PagedList<Artist>.Create(collection, pageNumber, pageSize);
+            var collection = _context.Artists.AsQueryable();
+            
+            //Filtrowanie i przeszukiwanie
+            if (parameters.IsActive.HasValue)
+            {
+                collection = collection.Where(x => x.IsActive == parameters.IsActive);
+            }
+            
+            // Zewnetrzne przeszukiwanie
+            // Mechanizm Full text search
+            // Elastic search
+            // Apache lucid/lucin
+            if (!string.IsNullOrWhiteSpace(parameters.SearchQuery))
+            {
+                var searchQuery = parameters.SearchQuery.Trim();
+                collection = collection.Where(x => x.Name.Contains(searchQuery) || x.Origin.Contains(searchQuery));
+            }
+            
             return PagedList<Artist>.Create(collection, parameters.PageNumber, parameters.PageSize);
+
+            // return PagedList<Artist>.Create(collection, pageNumber, pageSize);
             // return _context.Artists.ToListAsync();
         }
     }
