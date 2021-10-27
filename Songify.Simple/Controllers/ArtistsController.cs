@@ -76,9 +76,11 @@ namespace Songify.Simple.Controllers
         // [ProducesResponseType(typeof(PagedList<Artist>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         // public async Task<IActionResult> Get(int pageNumber, int pageSize)
-        public async Task<IActionResult> Get([FromQuery]int pageNumber, [FromQuery]int pageSize)
+        // public async Task<IActionResult> Get([FromQuery]int pageNumber, [FromQuery]int pageSize)
+        public async Task<IActionResult> Get([FromQuery]ArtistResourceParameters parameters)
         {
-            var artists = await _repository.GetArtists(pageNumber, pageSize);
+            // var artists = await _repository.GetArtists(pageNumber, pageSize);
+            var artists = await _repository.GetArtists(parameters);
             var paginationMetaData = new
             {
                 totalCount = artists.TotalCount,

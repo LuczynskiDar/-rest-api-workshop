@@ -11,6 +11,8 @@
         public int PageSize
         {
             get => _pageSize; 
+            
+            // Todo: Add checking negative value
             set => _pageSize = (value < MaxPageSize) ? value : MaxPageSize;
         }
     }

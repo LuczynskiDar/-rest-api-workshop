@@ -22,7 +22,7 @@
              <response code="422">Bad data inside the entity</response>
              <returns></returns>
         </member>
-        <member name="M:Songify.Simple.Controllers.ArtistsController.Get(System.Int32,System.Int32)">
+        <member name="M:Songify.Simple.Controllers.ArtistsController.Get(Songify.Simple.Dtos.ArtistResourceParameters)">
             <summary>
             Get a list of Artist 
             </summary>

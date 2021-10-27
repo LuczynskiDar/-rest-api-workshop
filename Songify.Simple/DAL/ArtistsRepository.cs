@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Songify.Simple.Dtos;
 using Songify.Simple.Helpers;
 using Songify.Simple.Models;
 
@@ -68,12 +69,14 @@ namespace Songify.Simple.DAL
             _context.Entry(artist).State = EntityState.Modified;
         }
 
-        public Task<PagedList<Artist>> GetArtists(int pageNumber, int pageSize)
+        public Task<PagedList<Artist>> GetArtists(ArtistResourceParameters parameters)
+        // public Task<PagedList<Artist>> GetArtists(int pageNumber, int pageSize)
         // public Task<List<Artist>> GetArtists()
         {
             var collection = _context.Artists.AsQueryable();
             // var collection = _context.Artists as IQueryable<Artist>;
-            return PagedList<Artist>.Create(collection, pageNumber, pageSize);
+            // return PagedList<Artist>.Create(collection, pageNumber, pageSize);
+            return PagedList<Artist>.Create(collection, parameters.PageNumber, parameters.PageSize);
             // return _context.Artists.ToListAsync();
         }
     }
