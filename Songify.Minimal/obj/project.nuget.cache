@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DVYT8AD0h94wy+QbyMcsg+1lh9+vrsHUOyseLdRTHW/Fo8r/eM0M6n1NEDCUreG2HOkeQIwPcfKUFwL5OyoHZg==",
+  "dgSpecHash": "LNEPlzeTZxXzLNB5loqNZV+auuvQJn8tlgfjIx7F69fbPbCgWcmZkMZlfDgSOPS12hhfk7RIO6WqhxbCe5KoXg==",
   "success": true,
-  "projectFilePath": "C:\\Workspace\\rest-api-workshop\\Songify.Minimal\\Songify.Minimal.csproj",
+  "projectFilePath": "c:\\Workspace\\rest-api-workshop\\Songify.Minimal\\Songify.Minimal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\qjx5pl\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\qjx5pl\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

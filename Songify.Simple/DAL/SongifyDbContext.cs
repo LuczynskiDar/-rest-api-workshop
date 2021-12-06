@@ -16,6 +16,8 @@ namespace Songify.Simple.DAL
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         { 
             optionsBuilder.UseLoggerFactory(MyLoggerFactory);
+            // Use sensitive login
+            //optionsBuilder.us
         }
     
         private static readonly ILoggerFactory MyLoggerFactory = 

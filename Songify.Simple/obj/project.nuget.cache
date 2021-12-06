@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "teTrx+iFPaF4HtzxyD5fOKFG1auOf8Bg4wOtpHEdr0lY3yFo98CFOYStTTtJBJ2dqUQl0iqSu5Pt77rbV6qpjA==",
+  "dgSpecHash": "+pOIdM01OWtx0QPu2guO0XQ6fmCg7chdNKObnebLsqhzQb8iWkSX5X2+/sAhB90/egcr5AuqW67Trb761GImFA==",
   "success": true,
-  "projectFilePath": "C:\\Workspace\\rest-api-workshop\\Songify.Simple\\Songify.Simple.csproj",
+  "projectFilePath": "c:\\Workspace\\rest-api-workshop\\Songify.Simple\\Songify.Simple.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\qjx5pl\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\qjx5pl\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

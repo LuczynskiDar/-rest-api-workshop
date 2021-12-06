@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Workspace\\rest-api-workshop\\TestMVC2\\TestMVC2.csproj": {}
+    "c:\\Workspace\\rest-api-workshop\\TestMVC2\\TestMVC2.csproj": {}
   },
   "projects": {
-    "C:\\Workspace\\rest-api-workshop\\TestMVC2\\TestMVC2.csproj": {
+    "c:\\Workspace\\rest-api-workshop\\TestMVC2\\TestMVC2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Workspace\\rest-api-workshop\\TestMVC2\\TestMVC2.csproj",
+        "projectUniqueName": "c:\\Workspace\\rest-api-workshop\\TestMVC2\\TestMVC2.csproj",
         "projectName": "TestMVC2",
-        "projectPath": "C:\\Workspace\\rest-api-workshop\\TestMVC2\\TestMVC2.csproj",
+        "projectPath": "c:\\Workspace\\rest-api-workshop\\TestMVC2\\TestMVC2.csproj",
         "packagesPath": "C:\\Users\\qjx5pl\\.nuget\\packages\\",
-        "outputPath": "C:\\Workspace\\rest-api-workshop\\TestMVC2\\obj\\",
+        "outputPath": "c:\\Workspace\\rest-api-workshop\\TestMVC2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\qjx5pl\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Workspace\\rest-api-workshop\\Songify.Simple\\Songify.Simple.csproj": {}
+    "c:\\Workspace\\rest-api-workshop\\Songify.Simple\\Songify.Simple.csproj": {}
   },
   "projects": {
-    "C:\\Workspace\\rest-api-workshop\\Songify.Simple\\Songify.Simple.csproj": {
+    "c:\\Workspace\\rest-api-workshop\\Songify.Simple\\Songify.Simple.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Workspace\\rest-api-workshop\\Songify.Simple\\Songify.Simple.csproj",
+        "projectUniqueName": "c:\\Workspace\\rest-api-workshop\\Songify.Simple\\Songify.Simple.csproj",
         "projectName": "Songify.Simple",
-        "projectPath": "C:\\Workspace\\rest-api-workshop\\Songify.Simple\\Songify.Simple.csproj",
+        "projectPath": "c:\\Workspace\\rest-api-workshop\\Songify.Simple\\Songify.Simple.csproj",
         "packagesPath": "C:\\Users\\qjx5pl\\.nuget\\packages\\",
-        "outputPath": "C:\\Workspace\\rest-api-workshop\\Songify.Simple\\obj\\",
+        "outputPath": "c:\\Workspace\\rest-api-workshop\\Songify.Simple\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\qjx5pl\\AppData\\Roaming\\NuGet\\NuGet.Config"

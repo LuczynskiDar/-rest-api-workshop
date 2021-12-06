@@ -39,6 +39,13 @@ namespace Songify.Simple
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // identity server, obecnie darmowy ale bedzie platny
+            // jest tam implementacja: open id connect, 
+            // uwiezytelnienie jest token jwt, w zewnetrznym serwerze
+            
+            // aplikacja na uaktualnianie schema
+            // fluentmigrator i dbup do rozdzielenia migracji od startu aplikacji
+            
             services.AddSingleton<InMemoryRepository>();
             services.AddAutoMapper(typeof(Startup));
             //scrutor
@@ -50,6 +57,7 @@ namespace Songify.Simple
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), 
                     conf =>
                     {
+                        // konfigurujemy gdzie przechowujemy migracji
                         conf.MigrationsAssembly(typeof(Startup).Assembly.FullName);
                     });
             });

@@ -15,3 +15,5 @@ RFC7807
 #lista temlate'ow tool-manifest
 dotnet new
 # sprawdzic build co sie nazywa cake
+
+# fluentmigrator i dbup do rozdzielenia migracji od startu aplikacji

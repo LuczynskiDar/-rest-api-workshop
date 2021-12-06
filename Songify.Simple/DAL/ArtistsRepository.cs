@@ -9,6 +9,7 @@ using Songify.Simple.Models;
 
 namespace Songify.Simple.DAL
 {
+    // da sie robic repozytorium generyczne ze snipeta
     public class ArtistsRepository: IRepository, IArtistRepository
     {
         private readonly SongifyDbContext _context;
@@ -21,6 +22,11 @@ namespace Songify.Simple.DAL
         
         public void Add(Artist artist)
         {
+            // .Add  dodajemy encje do change trackera, encjia nie jest zinsertowana do db
+            // w sql sa 3 sposoby ne gen id: 1. id column (db), 2. po stronie klienta (guid),
+            // 3. Po stronie serwera, tzw sekwencje high-low
+            // EF moze poprosic o paczke id z serwera, i dodawac id do entity, jak sie skoncza
+            // to ponownie prosi baze o paczke, wtedy ma sens uzywanie .AddAsync(model)
             _context.Artists.Add(artist);
 
         }
@@ -31,10 +37,13 @@ namespace Songify.Simple.DAL
         //    
         // }
         
+        // public ValueTask<Artist> Get(int id)
         public Task<Artist> Get(int id)
         {
             return _context.Artists
                 .FirstAsync(x => x.Id == id);
+            // _context.Artists.Find(id)
+            // _context.Artists.FindAsync(id)
         }
 
         // public void Delete(int id)
@@ -66,6 +75,7 @@ namespace Songify.Simple.DAL
         
         public void Update(Artist artist)
         {
+            // zmiana stanu change trackera z EF
             _context.Entry(artist).State = EntityState.Modified;
         }
 

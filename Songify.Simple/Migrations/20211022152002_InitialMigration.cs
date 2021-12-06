@@ -5,6 +5,12 @@ namespace Songify.Simple.Migrations
 {
     public partial class InitialMigration : Migration
     {
+        // Sposoby na migracje
+        // - migracja na starcie aplikacji  np w db context
+        //   Database.Migrate( ....)
+        //- konsolowo dotnet ef update -v
+        // Po utworzeniu migracji
+        // Skoro nie zostala zadelarowana zadna schema, to standardową jest dbo
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
