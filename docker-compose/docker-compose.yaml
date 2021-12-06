@@ -1,0 +1,113 @@
+version: "3.3"
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    # build:
+    #   context: ./docker/db/
+    #   dockerfile: Dockerfile
+    hostname: sql-server
+    container_name: sql-server
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=yourStrong(!)Password
+      - MSSQL_PID=Express
+    restart: always
+    # healthcheck:
+    #   test: sqlcmd -S db1.internal.prod.example.com -U SA -P 'Alaska2017' -Q 'select distinct 1 from AdventureWorksDW2017.dbo.DimDate'
+    networks:
+      restnet:
+        aliases:
+          - rest.api.net.core
+    volumes: 
+      - sqlsystem:/var/opt/mssql/
+      - sqldata:/var/opt/sqlserver/data
+      - sqllog:/var/opt/sqlserver/log
+      # - sqlbackup:/var/opt/sqlserver/backup
+    # volumes:
+    #   - './drive:/var/opt/mssql'
+
+networks:
+  restnet:
+    driver: bridge
+
+volumes:
+  sqlsystem:
+  sqldata:
+  sqllog:
+  # sqlbackup:
+
+
+# version: '3.3'
+# services:
+
+#   db:
+#     build:
+#       context: ./docker/db/
+#       dockerfile: Dockerfile
+#     ports:
+#       - "1433:1433"
+#     environment:
+#       SA_PASSWORD: "Alaska2017"
+#       ACCEPT_EULA: "Y"
+#     healthcheck:
+#       test: sqlcmd -S db1.internal.prod.example.com -U SA -P 'Alaska2017' -Q 'select distinct 1 from AdventureWorksDW2017.dbo.DimDate'
+#     networks:
+#       mynetwork:
+#         aliases:
+#           - db1.internal.prod.example.com
+
+# version: "3.4"
+# services:
+#     nopcommerce_web:
+#         build: .
+#         container_name: nopcommerce
+#         tty: true
+#         ports:
+#             - "80:80"       
+#         depends_on:
+#             - nopcommerce_database
+#     nopcommerce_database:
+#         image: mcr.microsoft.com/mssql/server:2019-CU5-ubuntu-18.04
+#         container_name: nopcommerceDB
+#         ports:
+#             - "1433:1433"
+#         environment:
+#             SA_PASSWORD: "testpassword"
+#             ACCEPT_EULA: "Y"             
+
+# volumes:
+#   nopcommerce_data:
+
+# version: '3.7'
+# services:
+#     sqlserver1:
+#         build: 
+#           context: .
+#           dockerfile: dockerfile
+#         ports:  
+#           - "15789:1433"
+#         env_file:
+#           - sqlserver.env
+#           - sapassword.env
+#         volumes: 
+#           - sqlsystem:/var/opt/mssql/
+#           - sqldata:/var/opt/sqlserver/data
+#           - sqllog:/var/opt/sqlserver/log
+#           - sqlbackup:/var/opt/sqlserver/backup
+# volumes:
+#   sqlsystem:
+#   sqldata:
+#   sqllog:
+#   sqlbackup:
+
+# https://dbafromthecold.com/2020/07/17/sql-server-and-docker-compose/
+# sqlserver.env
+# ACCEPT_EULA=Y
+# MSSQL_DATA_DIR=/var/opt/sqlserver/data
+# MSSQL_LOG_DIR=/var/opt/sqlserver/log
+# MSSQL_BACKUP_DIR=/var/opt/sqlserver/backup
+
+# sapassword.env
+# MSSQL_SA_PASSWORD=Testing1122

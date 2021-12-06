@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Songify.Simple</name>
+    </assembly>
+    <members>
+        <member name="M:Songify.Simple.Controllers.ArtistsController.Create(Songify.Simple.Dtos.CreateArtistResource)">
+             <summary>
+             Creates an Artist
+             </summary>
+             <remarks>
+             Some more comments inside remark.
+            
+             POST:
+             {
+                 "key": "value"
+             }
+             </remarks>
+             <param name="resource"></param>
+             <response code="200">Creates an Artist</response>
+             <response code="400">Bad request format</response>
+             <response code="422">Bad data inside the entity</response>
+             <returns></returns>
+        </member>
+        <member name="M:Songify.Simple.Controllers.ArtistsController.Get(Songify.Simple.Dtos.ArtistResourceParameters)">
+            <summary>
+            Get a list of Artist 
+            </summary>
+            <remarks>
+            Some more comment inside remarks tag
+            </remarks>
+            <returns>List of artists</returns>
+            <response code="200">Returns existing artists entity</response>
+        </member>
+    </members>
+</doc>
